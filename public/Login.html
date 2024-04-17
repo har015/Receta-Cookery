@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <!-- Google Sign-In -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="410069744225-th0t5skhun1r36ns2r2jtrbi9q393fpl.apps.googleusercontent.com">
+  <!-- Custom CSS for styling -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+    .container {
+      max-width: 400px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+    h2 {
+      text-align: center;
+    }
+    .signInButton {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #426B1F; /* Updated color */
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .signInButton:hover {
+      background-color: #2F4914; /* Darker shade on hover */
+    }
+    .textInput {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    .homeButton {
+      display: block;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #4285f4;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none; /* Remove default underline */
+      width: 100%; /* Set initial width to 100% */
+    }
+    .homeButton:hover {
+      background-color: #357ae8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Sign In</h2>
+    <input type="email" class="textInput" id="emailInput" placeholder="Email">
+    <input type="password" class="textInput" id="passwordInput" placeholder="Password">
+    <button class="signInButton" id="googleSignInButton">Sign In with Google</button>
+    <a href="Home.html" class="homeButton" id="homeButton">Go to Home</a>
+  </div>
+
+  <script>
+    // Dynamically set the width of homeButton to match signInButton
+    window.onload = function() {
+      var googleButtonWidth = document.getElementById('googleSignInButton').offsetWidth;
+      document.getElementById('homeButton').style.width = googleButtonWidth + 'px';
+    };
+  </script>
+</body>
+</html>

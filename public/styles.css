@@ -1,0 +1,161 @@
+/* Styles for Login.html */
+
+/* Global styles */
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+}
+
+.container {
+    width: 1440px;
+    height: 1024px;
+    position: relative;
+    background: white;
+}
+
+/* Header styles */
+.header {
+    width: 1440px;
+    height: 149px;
+    position: absolute;
+    top: 112px;
+    background: white;
+}
+
+.button-container {
+    position: absolute;
+    top: 76px;
+    right: 16px;
+    display: flex;
+    gap: 16px;
+}
+
+.default-button,
+.alphabetical-button,
+.list-view-button {
+    padding: 9.5px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.default-button {
+    color: white;
+    background: #426B1F;
+}
+
+.alphabetical-button,
+.list-view-button {
+    color: black;
+    background: white;
+    border: 1px #C2C2C2 solid;
+}
+
+.day-of-week {
+    position: absolute;
+    top: 90px;
+    left: 347px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.home-button {
+    position: absolute;
+    top: 56px;
+    left: 96px;
+    color: black;
+    font-size: 64px;
+    font-weight: 400;
+}
+
+.divider {
+    width: 1248px;
+    height: 0px;
+    position: absolute;
+    top: 149px;
+    left: 96px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 2px #E6E6E6 solid;
+}
+
+/* Navbar styles */
+.navbar {
+    width: 1440px;
+    height: 112px;
+    position: absolute;
+    top: 0;
+}
+
+.logo {
+    position: absolute;
+    top: 41px;
+    left: 96px;
+    color: #426B1F;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.nav-button {
+    position: absolute;
+    top: 45.5px;
+    font-size: 16px;
+}
+
+/* Recipe card styles */
+.recipe-card {
+    width: 395px;
+    height: 444px;
+    position: absolute;
+    background: #FAFAF5;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 2px #E6E6E6 solid;
+}
+
+.recipe-card button {
+    position: absolute;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.recipe-card .calories {
+    position: absolute;
+    font-size: 20px;
+    font-weight: 600;
+    color: #426B1F;
+}
+
+.recipe-card .saved {
+    position: absolute;
+    font-size: 16px;
+    color: #6D6D6D;
+}
+
+.recipe-card img {
+    width: 395px;
+    height: 296px;
+}
+
+.recipe-card input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    -webkit-appearance: none;
+    background: #D9D9D9;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Recommendations section styles */
+.recommendations {
+    width: 727px;
+    height: 68px;
+    position: absolute;
+    top: 353px;
+    left: 356px;
+    font-size: 64px;
+    font-weight: 400;
+}

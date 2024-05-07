@@ -53,7 +53,7 @@
       box-sizing: border-box;
       font-size: 16px;
     }
-    .homeButton {
+    .homeButton, .quizButton {
       display: block;
       padding: 10px;
       margin-top: 20px;
@@ -65,8 +65,9 @@
       text-align: center;
       text-decoration: none; /* Remove default underline */
       width: 100%; /* Set initial width to 100% */
+      cursor: pointer;
     }
-    .homeButton:hover {
+    .homeButton:hover, .quizButton:hover {
       background-color: #357ae8;
     }
   </style>
@@ -78,6 +79,7 @@
     <input type="password" class="textInput" id="passwordInput" placeholder="Password">
     <button class="signInButton" id="googleSignInButton">Sign In with Google</button>
     <a href="Home.html" class="homeButton" id="homeButton">Go to Home</a>
+    <button class="quizButton" id="takeQuizButton" onclick="window.location.href='quiz.html';">New User? Take the quiz!</button>
   </div>
 
   <script>

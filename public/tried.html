@@ -1,3 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipes</title>
+  <style>
+      /* Styling for the recipe titles */
+      .recipeTitle {
+          position: absolute;
+          color: black;
+          font-size: 20px;
+          font-family: Inter;
+          font-weight: 600;
+          line-height: 26px;
+          word-wrap: break-word;
+          z-index: 999; /* Ensure the title appears over other elements */
+      }
+
+      /* Adjusted styling for buttons */
+      .recipeButton {
+          position: absolute;
+          background-color: #CCCCCC; /* Grey background */
+          border: none;
+          width: 20px;
+          height: 20px;
+          z-index: 2147483647; /* Higher z-index */
+      }
+
+      /* Styling for recipe instructions */
+      .recipeInstructions {
+          position: absolute;
+          font-size: 14px;
+          font-family: Inter;
+          font-weight: 400;
+          color: black; /* Black font color */
+          line-height: 20px;
+          width: 266px; /* 2/3 of 400px */
+          display: none; /* Initially hidden */
+          top: 410px; /* Adjust top position */
+          left: 1050px; /* Adjust left position */
+          z-index: 9999; /* Ensure the instructions appear on top even when hidden */
+      }
+  </style>
+</head>
+<body>
+  <div id="recipeTitle1" class="recipeTitle" style="left: 384px; top: 350px;">Delicious Chocolate Cake</div>
+  <!-- First button -->
+  <button id="button1" class="recipeButton" style="left: 854px; top: 350px;" data-title="recipeTitle1"></button>
+  <!-- Instructions for Delicious Chocolate Cake -->
+  <div id="instructions1" class="recipeInstructions"></div>
+
+  <div id="recipeTitle2" class="recipeTitle" style="left: 384px; top: 540px;">Classic Lasagna</div>
+  <!-- Second button -->
+  <button id="button2" class="recipeButton" style="left: 854px; top: 540px;" data-title="recipeTitle2"></button>
+  <!-- Instructions for Classic Lasagna -->
+  <div id="instructions2" class="recipeInstructions"></div>
+
+  <div id="recipeTitle3" class="recipeTitle" style="left: 384px; top: 720px;">Homemade Pizza</div>
+  <!-- Third button -->
+  <button id="button3" class="recipeButton" style="left: 854px; top: 720px;" data-title="recipeTitle3"></button>
+  <!-- Instructions for Homemade Pizza -->
+  <div id="instructions3" class="recipeInstructions"></div>
+
+  <div id="recipeTitle4" class="recipeTitle" style="left: 384px; top: 895px;">Creamy Chicken Alfredo</div>
+  <!-- Fourth button -->
+  <button id="button4" class="recipeButton" style="left: 854px; top: 895px;" data-title="recipeTitle4"></button>
+  <!-- Instructions for Creamy Chicken Alfredo -->
+  <div id="instructions4" class="recipeInstructions"></div>
+
+  <!-- JavaScript to fetch and update recipe titles -->
+  <script>
+      let data; // Define the data variable outside the fetch
+
+      // Fetch the JSON file containing recipe titles
+      fetch('recipe.json')
+      .then(response => response.json())
+      .then(jsonData => {
+          // Assign the fetched data to the variable
+          data = jsonData;
+
+          // Get the recipe titles from the JSON
+          const recipeTitles = data.recipes.map(recipe => recipe.title);
+
+          // Update the recipe title placeholders with the fetched titles
+          for (let i = 0; i < recipeTitles.length; i++) {
+              const recipeTitleElement = document.getElementById(`recipeTitle${i + 1}`);
+              if (recipeTitleElement) {
+                  recipeTitleElement.textContent = recipeTitles[i];
+              }
+          }
+      })
+      .catch(error => console.error('Error fetching recipe titles:', error));
+
+      // Add event listener to buttons
+      const buttons = document.querySelectorAll('.recipeButton');
+      buttons.forEach(button => {
+          button.addEventListener('click', () => {
+              const titleId = button.getAttribute('data-title');
+              const titleElement = document.getElementById(titleId);
+              const duplicateTitle = document.querySelector('.duplicateTitle');
+
+              // Hide instructions for other recipes
+              document.querySelectorAll('.recipeInstructions').forEach(instruction => {
+                  instruction.style.display = 'none';
+              });
+
+              if (titleElement) {
+                  if (duplicateTitle) {
+                      duplicateTitle.remove();
+                  }
+                  const clonedTitle = titleElement.cloneNode(true);
+                  clonedTitle.classList.add('duplicateTitle');
+                  clonedTitle.style.left = (parseInt(clonedTitle.style.left) + 683) + 'px';
+                  // Add 200 pixels to the existing left position
+                  clonedTitle.style.top = '360px';
+                  // Adjust top position to 200px
+                  document.body.appendChild(clonedTitle);
+
+                  // Show instructions under the duplicated title
+                  const instructionsIndex = parseInt(titleId.slice(-1)) - 1;
+                  const instructionsElement = document.getElementById(`instructions${instructionsIndex + 1}`);
+                  instructionsElement.textContent = data.recipes[instructionsIndex].instructions.join('\n');
+                  instructionsElement.style.display = 'block';
+              }
+          });
+      });
+  </script>
+
 <!--Top Bar-->
   <div style="width: 1440px; height: 112px; left: 0px; top: 0px; position: absolute">
     <div style="left: 96px; top: 41px; position: absolute; color: #426B1F; font-size: 32px; font-family: Newsreader; font-weight: 500; line-height: 32px; word-wrap: break-word">Receta Cookery</div>
@@ -31,7 +160,7 @@
   
 
   <!--Recipe Card-->
-  <a href="#" onclick="handleClick()">
+  <!--a href="#" onclick="handleClick()"-->
     <div style="width: 821px; height: 159px; left: 96px; top: 500px; position: absolute; background: #FAFAF5; border-radius: 24px; overflow: hidden; border: 2px #E6E6E6 solid">
   
       <div style="left: 184px; top: 24px; position: absolute; color: black; font-size: 20px; font-family: Inter; font-weight: 600; line-height: 26px; word-wrap: break-word">Insert recipe title here</div>
@@ -57,5 +186,5 @@
       <img style="width: 160px; height: 160px; left: 0px; top: 0px; position: absolute" src="https://via.placeholder.com/160x160" />
   
     </div>
-  </a>
+  <!--/a-->
   
